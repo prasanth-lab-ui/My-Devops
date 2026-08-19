@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Platform & DevOps Engineer Roadmap | Step-by-Step Multi-Cloud Guide</title>
+  <meta name="description" content="A comprehensive, interactive step-by-step roadmap to become an AI Infrastructure, AI Platform Engineer, and DevOps Engineer with Multi-Cloud expertise (AWS, GCP, Azure).">
+  
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(18, 26, 43, 0.7);
+      --bg-card-hover: rgba(28, 39, 64, 0.85);
+      --bg-glass: rgba(15, 23, 42, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.4);
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.2rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: var(--radius-full);
+      color: #818cf8;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .header h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Overall Progress Bar */
+    .overall-progress-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .progress-title {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .progress-percentage {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .progress-track {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent-cyan) 50%, var(--accent-emerald) 100%);
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+    }
+
+    /* Navigation & Controls */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      background: var(--bg-card);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      color: white;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-fast);
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Roadmap Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 2rem;
+      bottom: 2rem;
+      width: 4px;
+      background: linear-gradient(180deg, 
+        var(--primary) 0%, 
+        var(--accent-cyan) 30%, 
+        var(--accent-purple) 65%, 
+        var(--accent-emerald) 100%);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
+
+    /* Phase Node */
+    .phase-block {
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .phase-badge-number {
+      position: absolute;
+      left: -2.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      box-shadow: 0 0 15px var(--primary-glow);
+      z-index: 2;
+    }
+
+    .phase-title-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phase-timeframe {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-cyan);
+    }
+
+    .phase-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Module Card */
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition-normal);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+    }
+
+    .module-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .module-card.completed {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .module-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-order-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .check-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-dim);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .check-btn:hover {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+
+    .module-card.completed .check-btn {
+      background: var(--accent-emerald);
+      color: #000;
+      border-color: var(--accent-emerald);
+    }
+
+    .module-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .module-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    /* Tags */
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tag.highlight {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .tag.cloud {
+      background: rgba(6, 182, 212, 0.12);
+      color: #7dd3fc;
+      border-color: rgba(6, 182, 212, 0.25);
+    }
+
+    .tag.ai {
+      background: rgba(168, 85, 247, 0.15);
+      color: #e9d5ff;
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .detail-btn {
+      background: transparent;
+      border: none;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition-fast);
+    }
+
+    .detail-btn:hover {
+      color: #a5b4fc;
+      gap: 0.5rem;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 13, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-step-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.4rem;
+    }
+
+    .modal-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .modal-list li {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .modal-list li i {
+      color: var(--accent-emerald);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .project-box {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .project-box-title {
+      font-weight: 700;
+      color: #a5b4fc;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-box p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Multi-Cloud Matrix Table */
+    .cloud-matrix-section {
+      margin-top: 4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .cloud-matrix-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .cloud-matrix-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .cloud-tag {
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cloud-aws { color: #ff9900; }
+    .cloud-gcp { color: #4285f4; }
+    .cloud-azure { color: #0078d4; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 { font-size: 2.2rem; }
+      .timeline { padding-left: 1.5rem; }
+      .timeline::before { left: 0.5rem; }
+      .phase-badge-number { left: -1.5rem; width: 1.8rem; height: 1.8rem; font-size: 0.8rem; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .controls-bar { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="badge-pill">
+        <i data-lucide="sparkles"></i> Step-by-Step Learning Guide 2026
+      </div>
+      <h1>AI Platform & DevOps Engineer Roadmap</h1>
+      <p>Master Linux, Multi-Cloud Infrastructure (AWS, GCP, Azure), Kubernetes, GPU Acceleration, Distributed Training, and Model Serving in exact sequential order.</p>
+      
+      <!-- Overall Progress Tracker -->
+      <div class="overall-progress-card">
+        <div class="progress-info">
+          <span class="progress-title">
+            <i data-lucide="trophy" style="color: var(--accent-amber)"></i> Your Learning Journey Progress
+          </span>
+          <span class="progress-percentage" id="progressPercentage">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted)">
+          <span id="completedCount">0 of 18 Steps Completed</span>
+          <button id="resetProgressBtn" style="background: none; border: none; color: var(--accent-rose); cursor: pointer; font-size: 0.8rem; font-weight: 600;">Reset Progress</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">
+          <i data-lucide="layers"></i> All Phases
+        </button>
+        <button class="filter-btn" data-filter="foundation">
+          <i data-lucide="terminal"></i> 1. Foundation
+        </button>
+        <button class="filter-btn" data-filter="devops">
+          <i data-lucide="cpu"></i> 2. Core DevOps & IaC
+        </button>
+        <button class="filter-btn" data-filter="multicloud">
+          <i data-lucide="cloud"></i> 3. Multi-Cloud
+        </button>
+        <button class="filter-btn" data-filter="k8s">
+          <i data-lucide="boxes"></i> 4. K8s & GPU Infra
+        </button>
+        <button class="filter-btn" data-filter="ai-platform">
+          <i data-lucide="brain-circuit"></i> 5. AI & MLOps Platform
+        </button>
+      </div>
+
+      <div class="search-box">
+        <i data-lucide="search"></i>
+        <input type="text" id="searchInput" placeholder="Search tools, GPUs, Terraform, vLLM...">
+      </div>
+    </div>
+
+    <!-- Timeline Body -->
+    <div class="timeline" id="timelineContainer">
+      <!-- Generated dynamically by Javascript -->
+    </div>
+
+    <!-- Multi-Cloud Reference Matrix -->
+    <section class="cloud-matrix-section">
+      <div class="cloud-matrix-header">
+        <h2>Multi-Cloud Services Matrix for AI & DevOps</h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0.5rem auto 0;">
+          Essential mapping of equivalent services across AWS, Google Cloud Platform (GCP), and Microsoft Azure for AI Infrastructure Engineers.
+        </p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability / Component</th>
+              <th><span class="cloud-tag cloud-aws"><i data-lucide="cloud"></i> AWS</span></th>
+              <th><span class="cloud-tag cloud-gcp"><i data-lucide="cloud"></i> GCP</span></th>
+              <th><span class="cloud-tag cloud-azure"><i data-lucide="cloud"></i> Azure</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Managed Kubernetes (K8s)</strong></td>
+              <td>Amazon EKS</td>
+              <td>Google Kubernetes Engine (GKE)</td>
+              <td>Azure Kubernetes Service (AKS)</td>
+            </tr>
+            <tr>
+              <td><strong>GPU Computing & Accelerators</strong></td>
+              <td>P4d/P5 (NVIDIA H100/A100), Trainium/Inferentia</td>
+              <td>A3 (NVIDIA H100), TPU v5e/v5p</td>
+              <td>NDv5 (NVIDIA H100/A100)</td>
+            </tr>
+            <tr>
+              <td><strong>Object Storage (Model/Weights)</strong></td>
+              <td>Amazon S3</td>
+              <td>Google Cloud Storage (GCS)</td>
+              <td>Azure Blob Storage</td>
+            </tr>
+            <tr>
+              <td><strong>High-Performance Distributed File System</strong></td>
+              <td>FSx for Lustre / EFS</td>
+              <td>Filestore High Scale / Parallelstore</td>
+              <td>Azure NetApp Files / Azure HPC Cache</td>
+            </tr>
+            <tr>
+              <td><strong>Infrastructure as Code (IaC)</strong></td>
+              <td>Terraform AWS Provider / AWS CDK</td>
+              <td>Terraform GCP Provider / Deployment Manager</td>
+              <td>Terraform Azure Provider / Bicep</td>
+            </tr>
+            <tr>
+              <td><strong>Managed AI / ML Platform</strong></td>
+              <td>Amazon SageMaker</td>
+              <td>Google Vertex AI</td>
+              <td>Azure Machine Learning</td>
+            </tr>
+            <tr>
+              <td><strong>Container Registry</strong></td>
+              <td>Amazon ECR</td>
+              <td>Artifact Registry / GCR</td>
+              <td>Azure Container Registry (ACR)</td>
+            </tr>
+            <tr>
+              <td><strong>Secrets & Key Management</strong></td>
+              <td>AWS Secrets Manager & KMS</td>
+              <td>GCP Secret Manager & Cloud KMS</td>
+              <td>Azure Key Vault</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>AI Infrastructure & Multi-Cloud DevOps Career Guide &copy; 2026. Designed for aspiring AI Platform Engineers.</p>
+    </footer>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-header">
+        <div class="modal-step-badge" id="modalStepBadge">STEP 01</div>
+        <h2 class="modal-title" id="modalTitle">Module Title</h2>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">
+          <i data-lucide="book-open" style="color: var(--accent-cyan)"></i> Core Topics & Concepts to Master
+        </div>
+        <ul class="modal-list" id="modalTopicsList"></ul>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">
+          <i data-lucide="wrench" style="color: var(--accent-purple)"></i> Tools & Frameworks
+        </div>
+        <div class="skills-tags" id="modalToolsList"></div>
+      </div>
+
+      <div class="project-box">
+        <div class="project-box-title">
+          <i data-lucide="rocket"></i> Recommended Hands-on Resume Project
+        </div>
+        <p id="modalProjectDesc">Description of project...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Roadmap Data Structure in Strict Order
+    const roadmapData = [
+      {
+        phaseId: "foundation",
+        phaseNum: 1,
+        phaseTitle: "Prerequisites & Core Fundamentals",
+        timeframe: "Months 1 - 2 | START HERE FIRST",
+        modules: [
+          {
+            id: "step-1",
+            stepNum: "01",
+            title: "Linux System Administration & Networking",
+            desc: "Master Linux CLI, kernel concepts, systemd, process isolation, and core networking principles.",
+            category: "foundation",
+            tags: ["Linux", "Bash", "Systemd", "Networking", "TCP/IP", "DNS"],
+            topics: [
+              "File system permissions, systemd service units, cron jobs",
+              "Process management (top, htop, ps, kill, Signals)",
+              "Networking basics: IP subnets, CIDR, DNS resolution, SSH tunneling",
+              "Network diagnostics (netstat, ss, tcpdump, curl, dig, iptables)",
+              "Storage management: LVM, RAID, mount points, NFS"
+            ],
+            tools: ["Ubuntu/Debian", "Bash Shell", "systemctl", "curl/dig", "WireGuard/OpenVPN"],
+            project: "Configure a hardened Linux server running systemd services, automated backup scripts, and secure SSH keys with a custom firewall configuration."
+          },
+          {
+            id: "step-2",
+            stepNum: "02",
+            title: "Python for Automation & Systems Engineering",
+            desc: "Write production-ready Python automation, API interfaces, and system diagnostics scripts.",
+            category: "foundation",
+            tags: ["Python", "FastAPI", "Asyncio", "REST APIs", "PyTest"],
+            topics: [
+              "Advanced Python: Asyncio, threading, multiprocessing",
+              "REST API development with FastAPI/Flask",
+              "Interacting with system APIs using `os`, `subprocess`, and `psutil`",
+              "Object-Oriented & Functional Python patterns",
+              "Virtual environments (`uv`, `poetry`), package distribution"
+            ],
+            tools: ["Python 3.12+", "FastAPI", "uv", "PyTest", "Requests/Httpx"],
+            project: "Build a Python-based CLI tool that monitors CPU, memory, and disk usage across servers and sends Slack alerts when thresholds are breached."
+          },
+          {
+            id: "step-3",
+            stepNum: "03",
+            title: "Go (Golang) Systems Programming Basics",
+            desc: "Understand Go fundamentals—essential for working with Kubernetes operators, Docker, and Cloud Native tools.",
+            category: "foundation",
+            tags: ["Golang", "Concurrency", "CLI Tools", "Cloud Native"],
+            topics: [
+              "Go syntax, structs, interfaces, error handling",
+              "Goroutines, channels, and concurrency patterns",
+              "Building lightweight compiled binaries",
+              "Consuming REST and gRPC APIs in Go"
+            ],
+            tools: ["Go 1.22+", "Cobra CLI library", "gRPC-go"],
+            project: "Develop a lightweight Go CLI tool that queries multi-cloud metadata endpoints and outputs formatted JSON system status."
+          }
+        ]
+      },
+      {
+        phaseId: "devops",
+        phaseNum: 2,
+        phaseTitle: "Core DevOps, IaC & Containerization",
+        timeframe: "Months 3 - 4 | SECOND STEP",
+        modules: [
+          {
+            id: "step-4",
+            stepNum: "04",
+            title: "Containerization (Docker & Containerd)",
+            desc: "Learn deep container concepts, multi-stage builds, runtime security, and image optimization.",
+            category: "devops",
+            tags: ["Docker", "Containerd", "Multi-stage", "Trivy", "Security"],
+            topics: [
+              "Linux Namespaces, cgroups, and container runtimes",
+              "Writing minimal multi-stage Dockerfiles",
+              "Container image optimization (distroless images, layer caching)",
+              "Docker Compose for multi-container local environments",
+              "Container security scanning & vulnerability checks"
+            ],
+            tools: ["Docker Engine", "containerd", "Docker Compose", "Trivy", "Hadolint"],
+            project: "Containerize a full-stack Python ML API with multi-stage builds, non-root user execution, and automated security scans using Trivy."
+          },
+          {
+            id: "step-5",
+            stepNum: "05",
+            title: "Infrastructure as Code (Terraform & OpenTofu)",
+            desc: "Provision cloud infrastructure declaratively using Terraform state, modules, and DRY principles.",
+            category: "devops",
+            tags: ["Terraform", "OpenTofu", "HCL", "Modules", "Remote State"],
+            topics: [
+              "HCL syntax, providers, resources, data sources",
+              "Remote state locking (S3 + DynamoDB / GCS / Azure Blob)",
+              "Reusable modular infrastructure patterns",
+              "Terraform workspaces & multi-environment strategy (Dev/Staging/Prod)",
+              "Drift detection and policy enforcement (OPA / Sentinel)"
+            ],
+            tools: ["Terraform", "OpenTofu", "Terragrunt", "Tflint"],
+            project: "Write Terraform modules to provision a multi-region VPC with public/private subnets, NAT gateways, and security groups."
+          },
+          {
+            id: "step-6",
+            stepNum: "06",
+            title: "CI/CD & GitOps Automation",
+            desc: "Build robust automated deployment pipelines using GitHub Actions, GitLab CI, and ArgoCD.",
+            category: "devops",
+            tags: ["GitHub Actions", "ArgoCD", "GitOps", "Helm", "CI/CD"],
+            topics: [
+              "Automated build, test, and container push pipelines",
+              "GitOps workflows (Declarative infrastructure & continuous deployment)",
+              "Helm chart packaging and release management",
+              "Secret management in CI/CD (HashiCorp Vault, Sealed Secrets)",
+              "Canary & Blue-Green deployment strategies"
+            ],
+            tools: ["GitHub Actions", "GitLab CI", "ArgoCD", "Helm", "Kustomize"],
+            project: "Setup a GitOps pipeline using GitHub Actions and ArgoCD that automatically deploys a helm-packaged microservice when code merges into master."
+          }
+        ]
+      },
+      {
+        phaseId: "multicloud",
+        phaseNum: 3,
+        phaseTitle: "Multi-Cloud Architecture (AWS, GCP, Azure)",
+        timeframe: "Months 5 - 6 | THIRD STEP",
+        modules: [
+          {
+            id: "step-7",
+            stepNum: "07",
+            title: "Amazon Web Services (AWS) Infrastructure",
+            desc: "Master AWS compute, high-performance networking, S3, and GPU EC2 instances (P4/P5).",
+            category: "multicloud",
+            tags: ["AWS", "EC2", "EKS", "S3", "VPC", "GPU P5/P4"],
+            topics: [
+              "AWS VPC design: Transit Gateways, VPC Peering, Endpoints",
+              "IAM policies, roles, OIDC for service accounts",
+              "EC2 GPU instances: P4d/P5 (H100), G5 (A10G), Inferentia/Trainium",
+              "High-performance storage: S3, EFS, FSx for Lustre (ML datasets)",
+              "Cost management, Savings Plans, and Spot Instance strategies"
+            ],
+            tools: ["AWS CLI", "AWS Management Console", "Terraform AWS Provider", "ebs-csi-driver"],
+            project: "Deploy an AWS VPC using Terraform with an S3 bucket configured with lifecycle policies and an EC2 GPU node running CUDA drivers."
+          },
+          {
+            id: "step-8",
+            stepNum: "08",
+            title: "Google Cloud Platform (GCP) Infrastructure",
+            desc: "Understand GCP IAM, GKE cluster management, Cloud Storage, and TPU/GPU accelerators.",
+            category: "multicloud",
+            tags: ["GCP", "GKE", "GCS", "VPC", "TPU v5e", "Vertex AI"],
+            topics: [
+              "GCP VPC Network architecture, Cloud NAT, Service Networking",
+              "GCP Service Accounts, Workload Identity federation",
+              "GCP Compute Engine with NVIDIA A3/A2 GPUs and TPU v5e/v5p slices",
+              "Google Cloud Storage (GCS) throughput tuning for training",
+              "Google Kubernetes Engine (GKE) Autopilot vs Standard"
+            ],
+            tools: ["gcloud CLI", "Terraform GCP Provider", "gsutil"],
+            project: "Provision a GKE cluster with GPU node pools using Terraform, utilizing Workload Identity to securely fetch model weights from Cloud Storage."
+          },
+          {
+            id: "step-9",
+            stepNum: "09",
+            title: "Microsoft Azure Infrastructure",
+            desc: "Master Azure Virtual Networks, AKS, Entra ID, and ND-series GPU virtual machines.",
+            category: "multicloud",
+            tags: ["Azure", "AKS", "Blob Storage", "Entra ID", "NDv5 GPUs"],
+            topics: [
+              "Azure VNet, Subnets, Network Security Groups (NSGs)",
+              "Microsoft Entra ID (Azure AD) & Managed Identities",
+              "Azure Kubernetes Service (AKS) with GPU nodepools",
+              "Azure Blob Storage & Azure NetApp Files for high IOPS",
+              "Azure NDv5 H100 Virtual Machines for AI workloads"
+            ],
+            tools: ["Azure CLI (az)", "Terraform Azure Provider", "AzCopy"],
+            project: "Build an automated Terraform script to launch an Azure AKS cluster connected to Azure Blob Storage using Azure Managed Identity."
+          }
+        ]
+      },
+      {
+        phaseId: "k8s",
+        phaseNum: 4,
+        phaseTitle: "Kubernetes & GPU Infrastructure",
+        timeframe: "Months 7 - 8 | FOURTH STEP",
+        modules: [
+          {
+            id: "step-10",
+            stepNum: "10",
+            title: "Advanced Kubernetes Administration",
+            desc: "Deep dive into K8s control plane, custom resource definitions (CRDs), CNI networking, and storage.",
+            category: "k8s",
+            tags: ["Kubernetes", "CNI", "CSI", "Envoy", "Karpenter"],
+            topics: [
+              "Control plane components: etcd, API Server, Scheduler, Controller Manager",
+              "CNI Plugins: Cilium (eBPF-based networking), Calico",
+              "CSI Drivers for distributed storage (Rook-Ceph, AWS FSx CSI, GCS CSI)",
+              "Ingress Controllers & Service Mesh (Envoy, Istio, Traefik)",
+              "Autoscaling: HPA, VPA, and Karpenter for dynamic node provisioning"
+            ],
+            tools: ["kubectl", "k9s", "Helm", "Cilium", "Karpenter"],
+            project: "Configure a production-grade Kubernetes cluster with Cilium CNI, Cert-Manager, and Karpenter for automated node scaling."
+          },
+          {
+            id: "step-11",
+            stepNum: "11",
+            title: "NVIDIA GPU Operators & Acceleration on K8s",
+            desc: "Configure NVIDIA Drivers, CUDA libraries, MIG partitioning, and GPU sharing on Kubernetes.",
+            category: "k8s",
+            tags: ["NVIDIA GPU", "CUDA", "MIG", "NVIDIA Operator", "Kueue"],
+            topics: [
+              "NVIDIA GPU Operator installation and container toolkit setup",
+              "CUDA, Driver versions, and Kernel compatibility",
+              "Multi-Instance GPU (MIG) slice partitioning (e.g. splitting an A100/H100 into smaller instances)",
+              "GPU Time-slicing vs NVIDIA MPS (Multi-Process Service)",
+              "Batch job scheduling with Kueue and Volcano"
+            ],
+            tools: ["NVIDIA GPU Operator", "nvidia-smi", "dcgm-exporter", "Kueue"],
+            project: "Deploy the NVIDIA GPU Operator on a Kubernetes cluster, configure MIG partitioning to slice an A100 GPU, and run concurrent workloads."
+          },
+          {
+            id: "step-12",
+            stepNum: "12",
+            title: "Observability, Telemetry & GPU Metrics",
+            desc: "Monitor cluster health, log aggregation, and GPU metrics (utilization, VRAM, temperature, power).",
+            category: "k8s",
+            tags: ["Prometheus", "Grafana", "OpenTelemetry", "DCGM", "Logs"],
+            topics: [
+              "Prometheus operator setup & alert rules",
+              "NVIDIA DCGM Exporter for GPU telemetry (SM utilization, Tensor core usage, VRAM leaks)",
+              "Distributed tracing with OpenTelemetry & Jaeger",
+              "Log aggregation: Vector, Fluentbit, Loki, Elasticsearch",
+              "Building custom Grafana dashboards for AI GPU clusters"
+            ],
+            tools: ["Prometheus", "Grafana", "NVIDIA DCGM Exporter", "Loki", "OpenTelemetry"],
+            project: "Set up a complete monitoring stack with Grafana, Prometheus, and DCGM exporter to track GPU memory utilization and send PagerDuty alerts on throttling."
+          }
+        ]
+      },
+      {
+        phaseId: "ai-platform",
+        phaseNum: 5,
+        phaseTitle: "AI Platform Engineering & MLOps",
+        timeframe: "Months 9 - 12 | FIFTH STEP (MASTER LEVEL)",
+        modules: [
+          {
+            id: "step-13",
+            stepNum: "13",
+            title: "Distributed Training Infra (Ray, Slurm & Kubeflow)",
+            desc: "Orchestrate multi-node GPU clusters for LLM pre-training and fine-tuning with PyTorch DDP and Ray.",
+            category: "ai-platform",
+            tags: ["KubeRay", "Ray Cluster", "PyTorch DDP", "Slurm", "DeepSpeed"],
+            topics: [
+              "Distributed Training Paradigms: Data Parallelism (DDP), Model Parallelism (Tensor/Pipeline), FSDP",
+              "High-speed interconnects: InfiniBand, RoCE, NCCL tuning, GPUDirect Storage",
+              "Slurm workload manager vs Kubernetes for HPC training clusters",
+              "Ray Core & KubeRay Operator for distributed ML workflows",
+              "DeepSpeed & Megatron-LM framework setup"
+            ],
+            tools: ["KubeRay", "Slurm", "PyTorch DDP", "DeepSpeed", "NCCL"],
+            project: "Deploy a Ray Cluster on Kubernetes using KubeRay and run a distributed LLaMA fine-tuning job across 4 GPU nodes."
+          },
+          {
+            id: "step-14",
+            stepNum: "14",
+            title: "High-Throughput Model Serving (vLLM & Triton)",
+            desc: "Deploy production LLM inference engines with PagedAttention, continuous batching, and GPU serving.",
+            category: "ai-platform",
+            tags: ["vLLM", "Triton Server", "TensorRT-LLM", "Inference", "KEDA"],
+            topics: [
+              "LLM Serving optimization: PagedAttention, KV Cache management, Continuous Batching",
+              "vLLM engine setup & OpenAI compatible endpoints",
+              "NVIDIA Triton Inference Server (Dynamic batching, concurrent model execution)",
+              "TensorRT-LLM model compilation",
+              "Autoscaling inference pods based on request queue depth with KEDA"
+            ],
+            tools: ["vLLM", "Triton Inference Server", "TensorRT-LLM", "KEDA"],
+            project: "Deploy vLLM on Kubernetes behind an ingress controller, configure auto-scaling with KEDA based on request latency, and run load tests."
+          },
+          {
+            id: "step-15",
+            stepNum: "15",
+            title: "Vector Databases & RAG Infrastructure",
+            desc: "Deploy, scale, and monitor distributed Vector Databases for Retrieval-Augmented Generation.",
+            category: "ai-platform",
+            tags: ["Milvus", "Qdrant", "Pinecone", "Pgvector", "RAG"],
+            topics: [
+              "Vector indexing algorithms: HNSW, IVF-Flat, DiskANN",
+              "Deploying distributed Milvus / Qdrant clusters on K8s",
+              "High-throughput vector search latency optimization",
+              "Caching layers for LLMs: Redis, Memcached for semantic cache",
+              "Data ingestion pipelines for unstructured data"
+            ],
+            tools: ["Qdrant", "Milvus", "Pgvector", "Redis", "Unstructured.io"],
+            project: "Build a high-availability Qdrant cluster on Kubernetes with persistent volumes and index a dataset of 1M embeddings."
+          },
+          {
+            id: "step-16",
+            stepNum: "16",
+            title: "MLOps Pipelines, Tracking & Data Layer",
+            desc: "Manage model registry, experiment tracking, feature stores, and dataset storage.",
+            category: "ai-platform",
+            tags: ["MLflow", "W&B", "Feast", "MinIO", "Spark"],
+            topics: [
+              "MLflow / Weights & Biases experiment tracking & model registry",
+              "S3 / MinIO data lake setup for model checkpoints and datasets",
+              "Feature Stores: Feast / Hopsworks integration",
+              "Data preprocessing pipelines with Apache Spark / Ray Data",
+              "Model versioning and lineage tracking (DVC)"
+            ],
+            tools: ["MLflow", "Weights & Biases", "MinIO", "Feast", "DVC"],
+            project: "Deploy MLflow on Kubernetes backed by MinIO object storage and PostgreSQL for model artifact versioning."
+          },
+          {
+            id: "step-17",
+            stepNum: "17",
+            title: "LLMOps Observability, Tracing & Guardrails",
+            desc: "Implement tracing, prompt evaluation, token cost monitoring, and AI security guardrails.",
+            category: "ai-platform",
+            tags: ["Langfuse", "Phoenix", "Guardrails", "AI Security", "Tracing"],
+            topics: [
+              "LLM Tracing & Telemetry: Langfuse, Arize Phoenix, OpenInference",
+              "Prompt evaluation, hallucination detection, token usage analytics",
+              "NeMo Guardrails & Guardrails AI for input/output security",
+              "Securing model artifacts against prompt injection & pickle exploits",
+              "Role-Based Access Control (RBAC) for AI API access"
+            ],
+            tools: ["Langfuse", "Arize Phoenix", "NeMo Guardrails", "Presidio"],
+            project: "Integrate Langfuse observability into an LLM inference service to track latency, token usage costs, and detect malicious prompts."
+          },
+          {
+            id: "step-18",
+            stepNum: "18",
+            title: "AI FinOps & GPU Cost Optimization",
+            desc: "Optimize GPU utilization, spot instance orchestration, and cloud cost management for AI clusters.",
+            category: "ai-platform",
+            tags: ["FinOps", "Kubecost", "Spot Instances", "GPU Sharing", "Cost"],
+            topics: [
+              "Kubecost / OpenCost for tracking per-team GPU and compute spend",
+              "Leveraging Spot/Preemptible GPU instances with fallback logic",
+              "Scale-to-Zero inference endpoints for low-traffic models",
+              "GPU packing, dynamic scheduling, and idle timeout policies",
+              "Multi-cloud arbitrage & reserved instance planning"
+            ],
+            tools: ["Kubecost", "OpenCost", "Karpenter", "Spot.io"],
+            project: "Configure Kubecost on a GPU cluster and set up Karpenter spot-instance fallback rules to reduce GPU compute costs by 60%."
+          }
+        ]
+      }
+    ];
+
+    // Local Storage Management
+    const STORAGE_KEY = 'ai_infra_roadmap_completed_steps';
+    let completedSteps = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    // Render Timeline Function
+    function renderTimeline(filter = 'all', searchQuery = '') {
+      const container = document.getElementById('timelineContainer');
+      container.innerHTML = '';
+
+      let totalModulesCount = 0;
+      
+      roadmapData.forEach(phase => {
+        // Filter logic
+        if (filter !== 'all' && phase.phaseId !== filter) {
+          return;
+        }
+
+        // Filter modules by search
+        const filteredModules = phase.modules.filter(mod => {
+          const matchTitle = mod.title.toLowerCase().includes(searchQuery.toLowerCase());
+          const matchDesc = mod.desc.toLowerCase().includes(searchQuery.toLowerCase());
+          const matchTags = mod.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+          return matchTitle || matchDesc || matchTags;
+        });
+
+        if (filteredModules.length === 0) return;
+
+        totalModulesCount += filteredModules.length;
+
+        // Phase Block HTML
+        const phaseBlock = document.createElement('div');
+        phaseBlock.className = 'phase-block';
+
+        const phaseHeaderHTML = `
+          <div class="phase-header">
+            <div class="phase-badge-number">${phase.phaseNum}</div>
+            <div class="phase-title-group">
+              <span class="phase-timeframe">${phase.timeframe}</span>
+              <h2 class="phase-title">${phase.phaseTitle}</h2>
+            </div>
+          </div>
+        `;
+
+        let modulesGridHTML = '<div class="modules-grid">';
+
+        filteredModules.forEach(mod => {
+          const isDone = completedSteps.includes(mod.id);
+          
+          const tagsHTML = mod.tags.map(tag => {
+            let tagClass = 'tag';
+            if (['AWS', 'GCP', 'Azure'].includes(tag)) tagClass += ' cloud';
+            else if (['Docker', 'Kubernetes', 'Terraform', 'Linux', 'Python'].includes(tag)) tagClass += ' highlight';
+            else tagClass += ' ai';
+            return `<span class="${tagClass}">${tag}</span>`;
+          }).join('');
+
+          modulesGridHTML += `
+            <div class="module-card ${isDone ? 'completed' : ''}" id="card-${mod.id}">
+              <div>
+                <div class="module-top">
+                  <span class="step-order-tag">STEP ${mod.stepNum}</span>
+                  <button class="check-btn" onclick="toggleStep('${mod.id}', event)" title="Mark as Completed">
+                    <i data-lucide="${isDone ? 'check' : 'circle'}"></i>
+                  </button>
+                </div>
+                <h3 class="module-title">${mod.title}</h3>
+                <p class="module-desc">${mod.desc}</p>
+                <div class="skills-tags">${tagsHTML}</div>
+              </div>
+              <div class="card-footer">
+                <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600;">Phase ${phase.phaseNum}</span>
+                <button class="detail-btn" onclick="openModal('${mod.id}')">
+                  View Guide & Project <i data-lucide="arrow-right" style="width:14px;"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        modulesGridHTML += '</div>';
+
+        phaseBlock.innerHTML = phaseHeaderHTML + modulesGridHTML;
+        container.appendChild(phaseBlock);
+      });
+
+      if (totalModulesCount === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 4rem; color: var(--text-muted);">
+            <i data-lucide="search-x" style="width: 48px; height: 48px; margin-bottom: 1rem; color: var(--text-dim);"></i>
+            <h3>No roadmap steps match your search</h3>
+            <p>Try searching for terms like "Terraform", "GPU", "AWS", or "Kubernetes"</p>
+          </div>
+        `;
+      }
+
+      lucide.createIcons();
+      updateProgressBar();
+    }
+
+    // Toggle Step Completion
+    function toggleStep(stepId, event) {
+      if (event) event.stopPropagation();
+      
+      if (completedSteps.includes(stepId)) {
+        completedSteps = completedSteps.filter(id => id !== stepId);
+      } else {
+        completedSteps.push(stepId);
+      }
+      
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(completedSteps));
+      
+      // Update UI
+      const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      const searchQuery = document.getElementById('searchInput').value;
+      renderTimeline(currentFilter, searchQuery);
+    }
+
+    // Reset Progress
+    document.getElementById('resetProgressBtn').addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all your learning progress?')) {
+        completedSteps = [];
+        localStorage.removeItem(STORAGE_KEY);
+        const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        renderTimeline(currentFilter, '');
+      }
+    });
+
+    // Update Progress Bar
+    function updateProgressBar() {
+      const totalSteps = 18; // Total modules across phases
+      const doneCount = completedSteps.length;
+      const percentage = Math.round((doneCount / totalSteps) * 100);
+
+      document.getElementById('progressPercentage').textContent = `${percentage}%`;
+      document.getElementById('progressFill').style.width = `${percentage}%`;
+      document.getElementById('completedCount').textContent = `${doneCount} of ${totalSteps} Steps Completed`;
+    }
+
+    // Modal Handling
+    function openModal(stepId) {
+      let targetModule = null;
+      roadmapData.forEach(p => {
+        p.modules.forEach(m => {
+          if (m.id === stepId) targetModule = m;
+        });
+      });
+
+      if (!targetModule) return;
+
+      document.getElementById('modalStepBadge').textContent = `STEP ${targetModule.stepNum}`;
+      document.getElementById('modalTitle').textContent = targetModule.title;
+
+      // Topics
+      const topicsList = document.getElementById('modalTopicsList');
+      topicsList.innerHTML = targetModule.topics.map(t => `
+        <li><i data-lucide="check-circle-2"></i> <span>${t}</span></li>
+      `).join('');
+
+      // Tools Tags
+      const toolsList = document.getElementById('modalToolsList');
+      toolsList.innerHTML = targetModule.tools.map(t => `
+        <span class="tag highlight">${t}</span>
+      `).join('');
+
+      // Project
+      document.getElementById('modalProjectDesc').textContent = targetModule.project;
+
+      const modal = document.getElementById('detailModal');
+      modal.classList.add('active');
+      lucide.createIcons();
+    }
+
+    document.getElementById('modalCloseBtn').addEventListener('click', () => {
+      document.getElementById('detailModal').classList.remove('active');
+    });
+
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        document.getElementById('detailModal').classList.remove('active');
+      }
+    });
+
+    // Event Listeners for Filters & Search
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        const searchQuery = document.getElementById('searchInput').value;
+        renderTimeline(filter, searchQuery);
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      renderTimeline(activeFilter, e.target.value);
+    });
+
+    // Initial Render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTimeline('all', '');
+    });
+  </script>
+</body>
+</html>

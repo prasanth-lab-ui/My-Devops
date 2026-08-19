@@ -1,0 +1,147 @@
+# CR Agent — System Architecture
+
+```mermaid
+flowchart TD
+
+    %% =========================================================
+    %% CR AGENT — Architecture
+    %% =========================================================
+
+    subgraph CLIENT["CLIENT LAYER"]
+        U["👤 User<br/>CR Request"]
+    end
+
+    subgraph GATEWAY["GATEWAY LAYER"]
+        API["⚡ FastAPI<br/>API Endpoint"]
+        PYD["Pydantic<br/>Request Validation"]
+    end
+
+    subgraph AGENT["AGENT CORE"]
+        LG["🧠 LangGraph<br/>Workflow Orchestrator"]
+
+        EXT["Extract<br/>Request Data"]
+        COMP["Completeness<br/>Check"]
+        CLAR["Clarify Loop<br/>Ask → Refine"]
+        DRAFT["Draft CR<br/>Generate Draft"]
+        
+        LG --> EXT
+        EXT --> COMP
+        COMP -->|Incomplete| CLAR
+        CLAR -->|Updated Input| EXT
+        COMP -->|Complete| DRAFT
+    end
+
+    subgraph AI["AI & MEMORY LAYER"]
+        LIT["🔀 LiteLLM<br/>LLM Router"]
+        NIM["NVIDIA NIM<br/>LLM"]
+        GEM["Google Gemini<br/>LLM"]
+
+        CHR["🗄️ ChromaDB<br/>Past CRs"]
+        MEM["🧩 Mem0<br/>User Preferences"]
+
+        GUARD["🛡️ Llama Guard<br/>Safety Check"]
+        RULES["Pydantic<br/>Business Rules"]
+    end
+
+    subgraph OUTPUT["OUTPUT & TOOLS"]
+        APPROVE{"✅ Approved?"}
+        XLS["openpyxl<br/>Template Writer"]
+        FILE["📄 CR.xlsx"]
+    end
+
+    OBS["📊 Langfuse<br/>Trace • Observe • Evaluate"]
+
+    %% =========================================================
+    %% MAIN REQUEST FLOW
+    %% =========================================================
+
+    U -->|Request| API
+    API --> PYD
+    PYD -->|Validated Request| LG
+
+    %% Context retrieval
+    EXT -.->|Retrieve Past Context| CHR
+    EXT -.->|Load Preferences| MEM
+
+    CHR -.->|Similar CR Context| DRAFT
+    MEM -.->|User Preferences| DRAFT
+
+    %% LLM orchestration
+    DRAFT -->|LLM Request| LIT
+    CLAR -->|LLM Assistance| LIT
+    EXT -->|LLM Assistance| LIT
+
+    LIT --> NIM
+    LIT --> GEM
+
+    NIM -->|Response| DRAFT
+    GEM -->|Response| DRAFT
+
+    %% Validation
+    DRAFT --> GUARD
+    DRAFT --> RULES
+
+    GUARD -->|Safe| APPROVE
+    GUARD -->|Unsafe| DRAFT
+
+    RULES -->|Valid| APPROVE
+    RULES -->|Invalid| DRAFT
+
+    APPROVE -->|Yes| XLS
+    APPROVE -->|No / Revise| DRAFT
+
+    XLS -->|Populate Template| FILE
+
+    %% =========================================================
+    %% OBSERVABILITY
+    %% =========================================================
+
+    API -.-> OBS
+    PYD -.-> OBS
+    LG -.-> OBS
+    EXT -.-> OBS
+    COMP -.-> OBS
+    CLAR -.-> OBS
+    DRAFT -.-> OBS
+    LIT -.-> OBS
+    GUARD -.-> OBS
+    RULES -.-> OBS
+    XLS -.-> OBS
+    FILE -.-> OBS
+
+    %% =========================================================
+    %% STYLING
+    %% =========================================================
+
+    classDef client fill:#111827,stroke:#64748B,color:#F8FAFC,stroke-width:2px;
+    classDef gateway fill:#172554,stroke:#3B82F6,color:#DBEAFE,stroke-width:2px;
+    classDef agent fill:#312E81,stroke:#6366F1,color:#EEF2FF,stroke-width:2px;
+    classDef ai fill:#3B176B,stroke:#A855F7,color:#F3E8FF,stroke-width:2px;
+    classDef memory fill:#064E3B,stroke:#10B981,color:#D1FAE5,stroke-width:2px;
+    classDef validation fill:#7C2D12,stroke:#F97316,color:#FFEDD5,stroke-width:2px;
+    classDef output fill:#064E3B,stroke:#22C55E,color:#DCFCE7,stroke-width:2px;
+    classDef file fill:#14532D,stroke:#4ADE80,color:#F0FDF4,stroke-width:2px;
+    classDef observe fill:#3F3F46,stroke:#F59E0B,color:#FEF3C7,stroke-width:2px;
+    classDef decision fill:#422006,stroke:#F59E0B,color:#FEF3C7,stroke-width:3px;
+
+    class U client;
+    class API,PYD gateway;
+    class LG,EXT,COMP,CLAR,DRAFT agent;
+    class LIT,NIM,GEM ai;
+    class CHR,MEM memory;
+    class GUARD,RULES validation;
+    class XLS output;
+    class FILE file;
+    class OBS observe;
+    class APPROVE decision;
+
+    %% =========================================================
+    %% SUBGRAPH STYLING
+    %% =========================================================
+
+    style CLIENT fill:#020617,stroke:#475569,stroke-width:2px,color:#E2E8F0
+    style GATEWAY fill:#0F172A,stroke:#3B82F6,stroke-width:2px,color:#DBEAFE
+    style AGENT fill:#1E1B4B,stroke:#6366F1,stroke-width:2px,color:#EEF2FF
+    style AI fill:#2E1065,stroke:#A855F7,stroke-width:2px,color:#F3E8FF
+    style OUTPUT fill:#052E16,stroke:#22C55E,stroke-width:2px,color:#DCFCE7
+```

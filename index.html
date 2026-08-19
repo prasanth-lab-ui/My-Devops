@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Cloud Practitioner (CLF-C02) — 25-Day Study Roadmap</title>
+  <meta name="description" content="Interactive 25-Day Study Roadmap for AWS Certified Cloud Practitioner (CLF-C02). Track daily progress, domain weights, cheat sheet outputs, and exam day readiness.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-card-hover: rgba(31, 41, 55, 0.8);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-color-hover: rgba(255, 153, 0, 0.4);
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-inverse: #0b0f19;
+      
+      --aws-orange: #ff9900;
+      --aws-orange-glow: rgba(255, 153, 0, 0.25);
+      --aws-squid: #232f3e;
+      --aws-blue: #38bdf8;
+      --aws-emerald: #10b981;
+      --aws-purple: #a855f7;
+      --aws-rose: #f43f5e;
+      --aws-amber: #f59e0b;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-glow: 0 0 25px rgba(255, 153, 0, 0.15);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html.light {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-hover: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --border-color-hover: rgba(234, 88, 12, 0.4);
+      
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-inverse: #ffffff;
+      
+      --aws-orange: #ea580c;
+      --aws-orange-glow: rgba(234, 88, 12, 0.15);
+      --aws-squid: #1e293b;
+      --aws-blue: #0284c7;
+      --aws-emerald: #059669;
+      --aws-purple: #9333ea;
+      --aws-rose: #e11d48;
+      --aws-amber: #d97706;
+      --shadow-glow: 0 10px 25px rgba(234, 88, 12, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 153, 0, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.04) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--aws-orange);
+    }
+
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    /* Header Navbar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .aws-badge {
+      background: linear-gradient(135deg, var(--aws-orange), #ff6600);
+      color: #ffffff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 10px var(--aws-orange-glow);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-icon:hover {
+      border-color: var(--aws-orange);
+      color: var(--aws-orange);
+      background: rgba(255, 153, 0, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-reset {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .btn-reset:hover {
+      color: var(--aws-rose);
+      border-color: var(--aws-rose);
+      background: rgba(244, 63, 94, 0.08);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--aws-orange), var(--aws-blue), var(--aws-purple));
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--text-main) 60%, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      max-width: 90%;
+    }
+
+    .exam-date-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 153, 0, 0.1);
+      border: 1px solid var(--aws-orange);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--aws-orange);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Countdown Card */
+    .countdown-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .countdown-header {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .countdown-timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .time-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+    }
+
+    .time-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--aws-orange);
+      line-height: 1;
+    }
+
+    .time-lbl {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+
+    /* Overall Progress Bar */
+    .progress-container {
+      margin-top: 0.5rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-track {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--aws-orange), #ffaa00);
+      border-radius: 20px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px var(--aws-orange-glow);
+    }
+
+    /* Quick Info Cards */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-color-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .stat-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Domain Weights Grid */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .domain-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .domain-card:hover {
+      border-color: var(--border-color-hover);
+    }
+
+    .domain-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .domain-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .domain-weight {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .domain-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .domain-mini-progress {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .domain-mini-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    /* Resource Legend Bar */
+    .resources-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .resource-tags {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .res-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+    }
+
+    .res-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+
+    /* Controls Bar: Filters & View Switcher */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      width: 16px;
+      height: 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.55rem 0.8rem 0.55rem 2.4rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.88rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--aws-orange);
+      box-shadow: 0 0 0 3px var(--aws-orange-glow);
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .pill:hover, .pill.active {
+      background: rgba(255, 153, 0, 0.12);
+      border-color: var(--aws-orange);
+      color: var(--aws-orange);
+    }
+
+    .view-switch {
+      display: flex;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.2rem;
+      gap: 0.2rem;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .view-btn.active {
+      background: var(--aws-squid);
+      color: #fff;
+    }
+    html.light .view-btn.active {
+      background: #e2e8f0;
+      color: var(--text-main);
+    }
+
+    /* Roadmap Timeline View */
+    .timeline-view {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .day-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: auto 110px 1.5fr 2.5fr 80px 1.5fr;
+      align-items: center;
+      gap: 1.25rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    @media (max-width: 1200px) {
+      .day-card {
+        grid-template-columns: auto 100px 1.2fr 2fr 1fr;
+      }
+      .day-card .col-output {
+        display: none;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .day-card {
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+      .day-card .col-domain,
+      .day-card .col-resource {
+        grid-column: 2;
+      }
+      .day-card .col-study {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .day-card:hover {
+      border-color: var(--border-color-hover);
+      transform: translateX(4px);
+    }
+
+    .day-card.completed {
+      opacity: 0.75;
+      background: rgba(16, 185, 129, 0.03);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .day-card.completed .study-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .day-card.today-highlight {
+      border-color: var(--aws-orange);
+      box-shadow: 0 0 20px var(--aws-orange-glow);
+    }
+
+    .day-card.today-highlight::after {
+      content: 'TODAY';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: var(--aws-orange);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Custom Checkbox */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-cb {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    .custom-cb:hover {
+      border-color: var(--aws-orange);
+    }
+
+    .custom-cb.checked {
+      background: var(--aws-emerald);
+      border-color: var(--aws-emerald);
+      color: #fff;
+    }
+
+    .day-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .day-date {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .domain-tag {
+      display: inline-block;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    /* Domain Colors */
+    .tag-concepts { background: rgba(56, 189, 248, 0.12); color: var(--aws-blue); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-security { background: rgba(244, 63, 94, 0.12); color: var(--aws-rose); border: 1px solid rgba(244, 63, 94, 0.3); }
+    .tag-tech { background: rgba(255, 153, 0, 0.12); color: var(--aws-orange); border: 1px solid rgba(255, 153, 0, 0.3); }
+    .tag-billing { background: rgba(168, 85, 247, 0.12); color: var(--aws-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tag-practice { background: rgba(16, 185, 129, 0.12); color: var(--aws-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-exam { background: rgba(245, 158, 11, 0.2); color: var(--aws-amber); border: 1px solid var(--aws-amber); }
+
+    .study-title {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .output-badge {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Table View */
+    .table-view {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: none;
+    }
+
+    .table-view th {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .table-view td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.88rem;
+    }
+
+    .table-view tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-view tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Rules & Exam Day Section */
+    .extra-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .extra-sections {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-card, .checklist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .rule-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      background: var(--bg-primary);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .rule-item i {
+      color: var(--aws-orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checklist-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: var(--bg-primary);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .check-item:hover {
+      border-color: var(--border-color-hover);
+    }
+
+    .check-item.done {
+      opacity: 0.65;
+      text-decoration: line-through;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+      <div class="brand">
+        <i data-lucide="cloud" style="color: var(--aws-orange);"></i>
+        <span>AWS Cloud Practitioner</span>
+        <span class="aws-badge">CLF-C02</span>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggle" title="Toggle Light/Dark Theme">
+          <i data-lucide="sun"></i>
+        </button>
+        <button class="btn-reset" id="resetBtn" title="Reset all checklist progress">
+          <i data-lucide="rotate-ccw"></i>
+          <span>Reset Progress</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="exam-date-banner">
+          <i data-lucide="calendar"></i>
+          <span>Exam Date: Tuesday, August 25, 2026</span>
+        </div>
+        <h1 class="hero-title">25-Day Sprint Roadmap</h1>
+        <p class="hero-subtitle">
+          Tailored for engineers with real AWS experience. Paced at ~1–1.5 hrs on weekdays & ~3–4 hrs on weekends. Days are heavily weighted toward exam trivia: compliance programs, support tiers, pricing models, and service breadth.
+        </p>
+
+        <!-- Overall Progress -->
+        <div class="progress-container">
+          <div class="progress-info">
+            <span>Overall Roadmap Completion</span>
+            <span id="progressPercent">0% (0/25 Days)</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Countdown Card -->
+      <div class="countdown-card">
+        <div class="countdown-header">
+          <i data-lucide="timer" style="color: var(--aws-orange);"></i>
+          <span>Countdown to Exam Day</span>
+        </div>
+        <div class="countdown-timer">
+          <div class="time-box">
+            <div class="time-val" id="cdDays">00</div>
+            <div class="time-lbl">Days</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="cdHours">00</div>
+            <div class="time-lbl">Hours</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="cdMins">00</div>
+            <div class="time-lbl">Mins</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="cdSecs">00</div>
+            <div class="time-lbl">Secs</div>
+          </div>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+          Stay disciplined! 85%+ score on 2 consecutive exams before exam day.
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(56, 189, 248, 0.12); color: var(--aws-blue);">
+          <i data-lucide="clock"></i>
+        </div>
+        <div>
+          <div class="stat-val">30 – 45 Hrs</div>
+          <div class="stat-label">Total Time Commitment</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(244, 63, 94, 0.12); color: var(--aws-rose);">
+          <i data-lucide="shield-check"></i>
+        </div>
+        <div>
+          <div class="stat-val">30% Weight</div>
+          <div class="stat-label">Security & Compliance</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(255, 153, 0, 0.12); color: var(--aws-orange);">
+          <i data-lucide="cpu"></i>
+        </div>
+        <div>
+          <div class="stat-val">34% Weight</div>
+          <div class="stat-label">Cloud Tech & Services</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--aws-emerald);">
+          <i data-lucide="target"></i>
+        </div>
+        <div>
+          <div class="stat-val">85%+ Target</div>
+          <div class="stat-label">Practice Exam Benchmark</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domain Allocation -->
+    <h2 class="section-title">
+      <i data-lucide="pie-chart" style="color: var(--aws-orange);"></i>
+      Exam Domains & Day Allocation
+    </h2>
+    <section class="domains-grid" id="domainsGrid">
+      <!-- Domain cards injected by JS -->
+    </section>
+
+    <!-- Resource Legend -->
+    <section class="resources-bar">
+      <div style="font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;">
+        <i data-lucide="book-open" style="color: var(--aws-blue);"></i>
+        <span>Resource Legend</span>
+      </div>
+      <div class="resource-tags">
+        <div class="res-item">
+          <span class="res-code" style="background: #2563eb;">SB</span>
+          <span><strong>AWS Skill Builder:</strong> Practitioner Essentials (~6h)</span>
+        </div>
+        <div class="res-item">
+          <span class="res-code" style="background: #059669;">TD</span>
+          <span><strong>Tutorials Dojo:</strong> CLF-C02 Exams + Cheat Sheets</span>
+        </div>
+        <div class="res-item">
+          <span class="res-code" style="background: #d97706;">EG</span>
+          <span><strong>AWS Exam Guide:</strong> Official CLF-C02 Syllabus</span>
+        </div>
+        <div class="res-item">
+          <span class="res-code" style="background: #dc2626;">FCC</span>
+          <span><strong>freeCodeCamp:</strong> YouTube CLF-C02 Course</span>
+        </div>
+        <div class="res-item">
+          <span class="res-code" style="background: #7c3aed;">FT</span>
+          <span><strong>AWS Free Tier Console:</strong> Hands-on exploration</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap Controls & Filter -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <i data-lucide="search"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search topics, services, or cheat sheets...">
+      </div>
+
+      <div class="filter-pills" id="domainFilters">
+        <button class="pill active" data-domain="all">All (25 Days)</button>
+        <button class="pill" data-domain="Cloud Concepts">Concepts</button>
+        <button class="pill" data-domain="Security & Compliance">Security</button>
+        <button class="pill" data-domain="Cloud Tech & Services">Technology</button>
+        <button class="pill" data-domain="Billing, Pricing & Support">Billing & Support</button>
+        <button class="pill" data-domain="Practice exams">Practice</button>
+      </div>
+
+      <div class="view-switch">
+        <button class="view-btn active" id="viewCardsBtn">
+          <i data-lucide="layout-list"></i> Timeline
+        </button>
+        <button class="view-btn" id="viewTableBtn">
+          <i data-lucide="table"></i> Table
+        </button>
+      </div>
+    </div>
+
+    <!-- Timeline Cards View -->
+    <section class="timeline-view" id="timelineView">
+      <!-- Injected via JS -->
+    </section>
+
+    <!-- Table View -->
+    <table class="table-view" id="tableView">
+      <thead>
+        <tr>
+          <th style="width: 50px;">Done</th>
+          <th style="width: 100px;">Day & Date</th>
+          <th style="width: 180px;">Domain</th>
+          <th>What to study</th>
+          <th style="width: 90px;">Resource</th>
+          <th style="width: 200px;">Output</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Injected via JS -->
+      </tbody>
+    </table>
+
+    <!-- Rules & Checklist Section -->
+    <div class="extra-sections">
+      <!-- Last Week Rules -->
+      <div class="rules-card">
+        <h3 style="font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; color: var(--aws-orange);">
+          <i data-lucide="alert-triangle"></i>
+          Rules for the Last Week (Days 21–25)
+        </h3>
+        <ul class="rules-list">
+          <li class="rule-item">
+            <i data-lucide="shield-alert"></i>
+            <div><strong>No new material after Day 20:</strong> Everything from Day 21 onwards is testing, repair, and revision — not learning new content.</div>
+          </li>
+          <li class="rule-item">
+            <i data-lucide="shuffle"></i>
+            <div><strong>Vary exam providers:</strong> Use different practice-exam providers (TD, SB, etc.) to prevent memorizing question patterns.</div>
+          </li>
+          <li class="rule-item">
+            <i data-lucide="award"></i>
+            <div><strong>The 85%+ Golden Standard:</strong> Don't mentally book your slot as "safe" until hitting 85%+ on 2 consecutive exams.</div>
+          </li>
+          <li class="rule-item">
+            <i data-lucide="check-square"></i>
+            <div><strong>Multi-response warning:</strong> "Select TWO" questions get no partial credit — flag and review them carefully.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Exam Day Checklist -->
+      <div class="checklist-card">
+        <h3 style="font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; color: var(--aws-emerald);">
+          <i data-lucide="check-circle-2"></i>
+          Exam Day Checklist
+        </h3>
+        <div class="checklist-group" id="checklistGroup">
+          <div class="check-item" data-id="chk1">
+            <div class="custom-cb"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span>Valid government photo ID ready (matches registration name exactly)</span>
+          </div>
+          <div class="check-item" data-id="chk2">
+            <div class="custom-cb"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span>Online Proctoring Ready: Quiet room, clear desk, webcam + mic tested, no 2nd monitor</span>
+          </div>
+          <div class="check-item" data-id="chk3">
+            <div class="custom-cb"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span>Test Center (if applicable): Arrive 30 mins early (Pearson VUE center in Chennai)</span>
+          </div>
+          <div class="check-item" data-id="chk4">
+            <div class="custom-cb"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span>No heavy studying same day: 20-30 min cheat-sheet skim in morning only</span>
+          </div>
+          <div class="check-item" data-id="chk5">
+            <div class="custom-cb"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span>Pacing strategy: ~1.4 min/question. Flag & move if stuck past that threshold</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>AWS Certified Cloud Practitioner (CLF-C02) 25-Day Prep Roadmap • Built for high efficiency</p>
+      <p style="margin-top: 0.4rem; font-size: 0.78rem;">Exam Target: August 25, 2026</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Roadmap Data Structure
+    const daysData = [
+      { day: 1, date: "Sat Aug 1", domain: "Cloud Concepts", study: "What is cloud computing, benefits (agility, elasticity, economies of scale, going global), deployment models", resource: "SB", output: "Notes started", tagClass: "tag-concepts" },
+      { day: 2, date: "Sun Aug 2", domain: "Cloud Concepts", study: "Well-Architected Framework 6 pillars (names + one-liners only), cloud economics (CapEx vs OpEx, TCO), Global Infrastructure (Regions/AZs/Edge Locations/Local Zones)", resource: "SB", output: "Flashcards: global infra terms", tagClass: "tag-concepts" },
+      { day: 3, date: "Mon Aug 3", domain: "Cloud Concepts", study: "Review + wrap domain. Domain 1 section quiz — review every miss", resource: "TD", output: "Domain 1 section quiz wrap", tagClass: "tag-concepts" },
+      { day: 4, date: "Tue Aug 4", domain: "Security & Compliance", study: "Shared Responsibility Model — what AWS manages vs. you, and how it shifts IaaS → PaaS → SaaS", resource: "SB", output: "Notes: Shared Responsibility", tagClass: "tag-security" },
+      { day: 5, date: "Wed Aug 5", domain: "Security & Compliance", study: "IAM at exam level (users/groups/roles/policies, root account best practices, MFA, least privilege)", resource: "SB", output: "Notes: IAM & Root Security", tagClass: "tag-security" },
+      { day: 6, date: "Thu Aug 6", domain: "Security & Compliance", study: "Security Groups vs. NACLs (concept only), WAF, Shield, Inspector, Macie, GuardDuty — what each does in one line", resource: "SB, FT", output: "One-liner cheat sheet started", tagClass: "tag-security" },
+      { day: 7, date: "Fri Aug 7", domain: "Security & Compliance", study: "KMS + encryption at rest/in transit (concept), AWS Organizations + SCPs, AWS Artifact, CloudTrail vs. CloudWatch vs. Config (classic trick question)", resource: "SB", output: "Notes: Governance & Monitoring", tagClass: "tag-security" },
+      { day: 8, date: "Sat Aug 8", domain: "Security & Compliance", study: "Compliance programs overview (SOC, PCI-DSS, HIPAA, GDPR — categories, not memorized certs) + consolidate all security notes", resource: "TD", output: "Domain 2 section quiz", tagClass: "tag-security" },
+      { day: 9, date: "Sun Aug 9", domain: "Security & Compliance", study: "Retake weak spots from Day 8 quiz; mixed review (Concepts + Security together)", resource: "TD", output: "Domain 2 retest — target 85%+", tagClass: "tag-security" },
+      { day: 10, date: "Tue Aug 10", domain: "Cloud Tech & Services", study: "Compute: EC2 instance families (high level), purchasing options (On-Demand/Reserved/Spot/Savings Plans), Lambda, Elastic Beanstalk, Lightsail, ECS/EKS/Fargate, Auto Scaling, ELB", resource: "SB", output: "Cheat sheet: compute", tagClass: "tag-tech" },
+      { day: 11, date: "Wed Aug 11", domain: "Cloud Tech & Services", study: "Storage: S3 storage classes/versioning/lifecycle, EBS, EFS, FSx, Storage Gateway, Snowball/Snowmobile", resource: "SB", output: "Cheat sheet: storage", tagClass: "tag-tech" },
+      { day: 12, date: "Thu Aug 12", domain: "Cloud Tech & Services", study: "Databases: RDS engines + Multi-AZ concept, Aurora, DynamoDB, ElastiCache, Redshift, DocumentDB/Neptune (recognition level)", resource: "SB", output: "Cheat sheet: databases", tagClass: "tag-tech" },
+      { day: 13, date: "Fri Aug 13", domain: "Cloud Tech & Services", study: "Networking: VPC basics, Route 53, CloudFront, Direct Connect, VPN, API Gateway, Global Accelerator", resource: "SB", output: "Cheat sheet: networking", tagClass: "tag-tech" },
+      { day: 14, date: "Sat Aug 14", domain: "Cloud Tech & Services", study: "Analytics (Athena, EMR, Glue, Kinesis, QuickSight), AI/ML (SageMaker, Rekognition, Comprehend, Polly, Textract), App integration (SQS, SNS, EventBridge, Step Functions)", resource: "SB", output: "Cheat sheet: analytics/ML/integration", tagClass: "tag-tech" },
+      { day: 15, date: "Sun Aug 15", domain: "Cloud Tech & Services", study: "Management & migration: CloudFormation, CloudWatch, Systems Manager, Trusted Advisor, Control Tower, DMS, Migration Hub, CodePipeline/Build/Deploy", resource: "SB", output: "Cheat sheet: management/migration", tagClass: "tag-tech" },
+      { day: 16, date: "Mon Aug 16", domain: "Cloud Tech & Services", study: "Consolidate the full service cheat sheet (all 6 categories on one page)", resource: "TD", output: "Domain 3 section quiz", tagClass: "tag-tech" },
+      { day: 17, date: "Tue Aug 17", domain: "Cloud Tech & Services", study: "Retake weak service categories; flashcard drill on one-liners", resource: "TD", output: "Domain 3 retest — target 85%+", tagClass: "tag-tech" },
+      { day: 18, date: "Wed Aug 18", domain: "Billing, Pricing & Support", study: "Pricing models compared (On-Demand/Reserved/Spot/Savings Plans), Free Tier, Pricing Calculator, Cost Explorer, Budgets, Cost & Usage Reports, Consolidated Billing", resource: "SB", output: "Notes: Pricing & Billing", tagClass: "tag-billing" },
+      { day: 19, date: "Thu Aug 19", domain: "Billing, Pricing & Support", study: "Support plan tiers (Basic/Developer/Business/Enterprise — what's included in each, heavily tested), Trusted Advisor checks by tier, AWS Marketplace", resource: "SB", output: "Cheat sheet: support tiers", tagClass: "tag-billing" },
+      { day: 20, date: "Fri Aug 20", domain: "Billing, Pricing & Support", study: "Consolidate + quiz. Domain 4 section quiz — review every miss", resource: "TD", output: "Domain 4 section quiz", tagClass: "tag-billing" },
+      { day: 21, date: "Sat Aug 21", domain: "Practice exams", study: "First full 65-Q timed exam under real conditions (90 min, no phone)", resource: "TD / SB", output: "Log every miss in tracker", tagClass: "tag-practice" },
+      { day: 22, date: "Sun Aug 22", domain: "Practice exams", study: "Weak-domain repair: Re-study whatever scored lowest on Day 21 + Full practice exam #2 (different provider)", resource: "TD / SB", output: "Full Practice Exam #2", tagClass: "tag-practice" },
+      { day: 23, date: "Mon Aug 23", domain: "Practice exams", study: "Weak-domain repair: Hit remaining gaps + Full practice exam #3 — target consistent 85%+ before moving on", resource: "TD / SB", output: "Full Practice Exam #3", tagClass: "tag-practice" },
+      { day: 24, date: "Tue Aug 24", domain: "Practice exams", study: "Final review: Skim cheat sheets only — no new material. Support tiers, pricing differences, shared responsibility, service one-liners", resource: "TD / SB", output: "Short 30–40 Q warm-up set", tagClass: "tag-practice" },
+      { day: 25, date: "Wed Aug 25", domain: "Exam day", study: "EXAM DAY! 20–30 min cheat-sheet skim in the morning, nothing new. Take the exam!", resource: "—", output: "Take the Exam 🎯", tagClass: "tag-exam" }
+    ];
+
+    const domainWeights = [
+      { name: "Cloud Concepts", weight: "24%", days: "3 Days (Days 1–3)", color: "var(--aws-blue)", progressDays: [1, 2, 3] },
+      { name: "Security & Compliance", weight: "30%", days: "6 Days (Days 4–9)", color: "var(--aws-rose)", progressDays: [4, 5, 6, 7, 8, 9] },
+      { name: "Cloud Tech & Services", weight: "34%", days: "8 Days (Days 10–17)", color: "var(--aws-orange)", progressDays: [10, 11, 12, 13, 14, 15, 16, 17] },
+      { name: "Billing, Pricing & Support", weight: "12%", days: "3 Days (Days 18–20)", color: "var(--aws-purple)", progressDays: [18, 19, 20] },
+      { name: "Practice & Exam Day", weight: "—", days: "5 Days (Days 21–25)", color: "var(--aws-emerald)", progressDays: [21, 22, 23, 24, 25] }
+    ];
+
+    // Local Storage State
+    let completedDays = JSON.parse(localStorage.getItem('aws_clf_completed_days') || '[]');
+    let checklistDone = JSON.parse(localStorage.getItem('aws_clf_checklist') || '{}');
+
+    // DOM Elements
+    const timelineView = document.getElementById('timelineView');
+    const tableBody = document.getElementById('tableBody');
+    const progressPercent = document.getElementById('progressPercent');
+    const progressFill = document.getElementById('progressFill');
+    const searchInput = document.getElementById('searchInput');
+    const domainFilters = document.getElementById('domainFilters');
+    const viewCardsBtn = document.getElementById('viewCardsBtn');
+    const viewTableBtn = document.getElementById('viewTableBtn');
+    const tableView = document.getElementById('tableView');
+    const themeToggle = document.getElementById('themeToggle');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // Init Theme
+    if (localStorage.getItem('aws_theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        localStorage.setItem('aws_theme', 'light');
+      } else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('aws_theme', 'dark');
+      }
+      lucide.createIcons();
+    });
+
+    // Render Domains Grid
+    function renderDomains() {
+      const domainsGrid = document.getElementById('domainsGrid');
+      domainsGrid.innerHTML = domainWeights.map(d => {
+        const doneCount = d.progressDays.filter(dayNum => completedDays.includes(dayNum)).length;
+        const pct = Math.round((doneCount / d.progressDays.length) * 100);
+        return `
+          <div class="domain-card">
+            <div class="domain-header">
+              <span class="domain-name">${d.name}</span>
+              <span class="domain-weight" style="color:${d.color}">${d.weight}</span>
+            </div>
+            <div class="domain-meta">${d.days} • ${doneCount}/${d.progressDays.length} Done</div>
+            <div class="domain-mini-progress">
+              <div class="domain-mini-fill" style="width: ${pct}%; background: ${d.color}"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render Timeline & Table
+    function renderRoadmap(filterDomain = 'all', searchQuery = '') {
+      timelineView.innerHTML = '';
+      tableBody.innerHTML = '';
+
+      const query = searchQuery.toLowerCase().trim();
+
+      daysData.forEach(item => {
+        // Filter logic
+        const matchesDomain = (filterDomain === 'all') || (item.domain === filterDomain);
+        const matchesSearch = !query || 
+          item.study.toLowerCase().includes(query) || 
+          item.domain.toLowerCase().includes(query) || 
+          item.output.toLowerCase().includes(query) ||
+          `day ${item.day}`.includes(query);
+
+        if (!matchesDomain || !matchesSearch) return;
+
+        const isDone = completedDays.includes(item.day);
+        const isToday = item.day === 1; // Default highlight Day 1 as active/today
+
+        // Create Card Element
+        const card = document.createElement('div');
+        card.className = `day-card ${isDone ? 'completed' : ''} ${isToday ? 'today-highlight' : ''}`;
+        card.innerHTML = `
+          <div class="checkbox-wrapper">
+            <button class="custom-cb ${isDone ? 'checked' : ''}" onclick="toggleDay(${item.day})">
+              <i data-lucide="check" style="width:14px; height:14px;"></i>
+            </button>
+          </div>
+          <div class="day-number">
+            <span>DAY ${item.day}</span>
+            <span class="day-date">${item.date}</span>
+          </div>
+          <div class="col-domain">
+            <span class="domain-tag ${item.tagClass}">${item.domain}</span>
+          </div>
+          <div class="col-study">
+            <div class="study-title">${item.study}</div>
+          </div>
+          <div class="col-resource">
+            <span class="output-badge" style="font-weight:700; font-family: 'JetBrains Mono';">${item.resource}</span>
+          </div>
+          <div class="col-output">
+            <span class="output-badge"><i data-lucide="file-text" style="width:13px; height:13px;"></i> ${item.output}</span>
+          </div>
+        `;
+        timelineView.appendChild(card);
+
+        // Create Table Row Element
+        const tr = document.createElement('tr');
+        if (isDone) tr.style.opacity = '0.7';
+        tr.innerHTML = `
+          <td>
+            <button class="custom-cb ${isDone ? 'checked' : ''}" onclick="toggleDay(${item.day})">
+              <i data-lucide="check" style="width:14px; height:14px;"></i>
+            </button>
+          </td>
+          <td><strong>Day ${item.day}</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">${item.date}</span></td>
+          <td><span class="domain-tag ${item.tagClass}">${item.domain}</span></td>
+          <td>${item.study}</td>
+          <td><code>${item.resource}</code></td>
+          <td><span class="output-badge">${item.output}</span></td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      lucide.createIcons();
+      updateProgress();
+      renderDomains();
+    }
+
+    // Toggle Day Completion
+    window.toggleDay = function(dayNum) {
+      if (completedDays.includes(dayNum)) {
+        completedDays = completedDays.filter(d => d !== dayNum);
+      } else {
+        completedDays.push(dayNum);
+      }
+      localStorage.setItem('aws_clf_completed_days', JSON.stringify(completedDays));
+      renderRoadmap(getActiveDomainFilter(), searchInput.value);
+    };
+
+    function getActiveDomainFilter() {
+      const activePill = document.querySelector('.filter-pills .pill.active');
+      return activePill ? activePill.dataset.domain : 'all';
+    }
+
+    // Update Overall Progress
+    function updateProgress() {
+      const count = completedDays.length;
+      const pct = Math.round((count / 25) * 100);
+      progressPercent.textContent = `${pct}% (${count}/25 Days Completed)`;
+      progressFill.style.width = `${pct}%`;
+    }
+
+    // Countdown Timer Logic
+    function updateCountdown() {
+      const targetDate = new Date('August 25, 2026 09:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cdDays').textContent = days < 10 ? '0' + days : days;
+        document.getElementById('cdHours').textContent = hours < 10 ? '0' + hours : hours;
+        document.getElementById('cdMins').textContent = mins < 10 ? '0' + mins : mins;
+        document.getElementById('cdSecs').textContent = secs < 10 ? '0' + secs : secs;
+      } else {
+        document.getElementById('cdDays').textContent = '00';
+        document.getElementById('cdHours').textContent = '00';
+        document.getElementById('cdMins').textContent = '00';
+        document.getElementById('cdSecs').textContent = '00';
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Event Listeners for Filters & Views
+    domainFilters.addEventListener('click', (e) => {
+      if (e.target.classList.contains('pill')) {
+        document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+        e.target.classList.add('active');
+        renderRoadmap(e.target.dataset.domain, searchInput.value);
+      }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      renderRoadmap(getActiveDomainFilter(), e.target.value);
+    });
+
+    viewCardsBtn.addEventListener('click', () => {
+      viewCardsBtn.classList.add('active');
+      viewTableBtn.classList.remove('active');
+      timelineView.style.display = 'flex';
+      tableView.style.display = 'none';
+    });
+
+    viewTableBtn.addEventListener('click', () => {
+      viewTableBtn.classList.add('active');
+      viewCardsBtn.classList.remove('active');
+      timelineView.style.display = 'none';
+      tableView.style.display = 'table';
+    });
+
+    // Exam Checklist Handler
+    const checklistGroup = document.getElementById('checklistGroup');
+    
+    function renderChecklist() {
+      document.querySelectorAll('.check-item').forEach(item => {
+        const id = item.dataset.id;
+        const cb = item.querySelector('.custom-cb');
+        if (checklistDone[id]) {
+          item.classList.add('done');
+          cb.classList.add('checked');
+        } else {
+          item.classList.remove('done');
+          cb.classList.remove('checked');
+        }
+      });
+    }
+
+    checklistGroup.addEventListener('click', (e) => {
+      const item = e.target.closest('.check-item');
+      if (!item) return;
+      const id = item.dataset.id;
+      checklistDone[id] = !checklistDone[id];
+      localStorage.setItem('aws_clf_checklist', JSON.stringify(checklistDone));
+      renderChecklist();
+    });
+
+    // Reset Progress
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all roadmap and checklist progress?')) {
+        completedDays = [];
+        checklistDone = {};
+        localStorage.removeItem('aws_clf_completed_days');
+        localStorage.removeItem('aws_clf_checklist');
+        renderRoadmap();
+        renderChecklist();
+      }
+    });
+
+    // Initial Execution
+    renderRoadmap();
+    renderChecklist();
+    lucide.createIcons();
+  </script>
+</body>
+</html>
