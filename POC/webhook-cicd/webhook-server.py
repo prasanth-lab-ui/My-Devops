@@ -48,16 +48,26 @@ def webhook():
 
     print(f"Webhook received: {branch}")
 
-    if branch == "refs/heads/main":
-        print("main branch pushed! Running local script...")
-        script_path = BASE_DIR / "test.sh" # or test.sh
+    if branch in ["refs/heads/main", "refs/heads/dev"]:
+        print(f"{branch} pushed! Launching WSL popup terminal and logging...")
+        script_path = BASE_DIR / "test.sh"
+
+        # Log timestamp header to deploy.log
+        with open(BASE_DIR / "deploy.log", "a", encoding="utf-8") as f:
+            f.write(f"\n--- [Webhook Triggered: {branch}] ---\n")
+
+        # Command to launch in a new visible popup window running WSL + tee to deploy.log
+        wsl_cmd = (
+            f"bash '{script_path.name}' 2>&1 | tee -a deploy.log; "
+            f"echo ''; read -n 1 -s -r -p 'Press any key to close...'"
+        )
 
         subprocess.Popen(
-            ["bash", str(script_path)],
+            ["cmd.exe", "/c", "start", "CI/CD Webhook Trigger", "wsl", "bash", "-c", wsl_cmd],
             cwd=str(BASE_DIR)
         )
 
-        return {"status": "success", "message": "Script started"}
+        return {"status": "success", "message": "WSL script started in popup window"}
 
     return {"status": "ignored", "message": f"Ignored ref: {branch}"}
 
