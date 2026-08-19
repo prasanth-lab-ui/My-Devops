@@ -35,6 +35,7 @@ def verify_signature():
 
     return hmac.compare_digest(signature, expected)
 
+@app.route("/", methods=["POST"])
 @app.route("/webhook", methods=["POST"])
 def webhook():
     # Security check
