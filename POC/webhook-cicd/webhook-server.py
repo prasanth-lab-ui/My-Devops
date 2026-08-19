@@ -35,6 +35,15 @@ def verify_signature():
 
     return hmac.compare_digest(signature, expected)
 
+def get_wsl_path(p: Path) -> str:
+    posix = p.resolve().as_posix()
+    if posix.startswith("/mnt/") or (posix.startswith("/") and not ":" in posix):
+        return posix
+    if ":" in posix:
+        drive, rest = posix.split(":", 1)
+        return f"/mnt/{drive.lower()}{rest}"
+    return posix
+
 @app.route("/", methods=["POST"])
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -56,10 +65,8 @@ def webhook():
         with open(BASE_DIR / "deploy.log", "a", encoding="utf-8") as f:
             f.write(f"\n--- [Webhook Triggered: {branch}] ---\n")
 
-        # Convert Windows path (e.g. C:/Users/... -> /mnt/c/Users/...)
-        drive = BASE_DIR.drive.rstrip(":").lower()
-        path_without_drive = BASE_DIR.as_posix().split(":", 1)[-1]
-        wsl_dir = f"/mnt/{drive}{path_without_drive}"
+        # Correct WSL directory
+        wsl_dir = get_wsl_path(BASE_DIR)
 
         # Command to cd into the directory, run test.sh, tee output to deploy.log, and pause on exit
         wsl_cmd = (
