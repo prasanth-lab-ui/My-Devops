@@ -48,8 +48,8 @@ def webhook():
 
     print(f"Webhook received: {branch}")
 
-    if branch == "refs/heads/dev":
-        print("dev branch pushed! Running local script...")
+    if branch == "refs/heads/main":
+        print("main branch pushed! Running local script...")
         script_path = BASE_DIR / "test.sh" # or test.sh
 
         subprocess.Popen(
