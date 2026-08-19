@@ -49,16 +49,21 @@ def webhook():
     print(f"Webhook received: {branch}")
 
     if branch in ["refs/heads/main", "refs/heads/dev"]:
-        print(f"{branch} pushed! Launching WSL popup terminal and logging...")
+        print(f"--> {branch} pushed! Launching WSL popup terminal and logging...")
         script_path = BASE_DIR / "test.sh"
 
         # Log timestamp header to deploy.log
         with open(BASE_DIR / "deploy.log", "a", encoding="utf-8") as f:
             f.write(f"\n--- [Webhook Triggered: {branch}] ---\n")
 
-        # Command to launch in a new visible popup window running WSL + tee to deploy.log
+        # Convert Windows path (e.g. C:/Users/... -> /mnt/c/Users/...)
+        drive = BASE_DIR.drive.rstrip(":").lower()
+        path_without_drive = BASE_DIR.as_posix().split(":", 1)[-1]
+        wsl_dir = f"/mnt/{drive}{path_without_drive}"
+
+        # Command to cd into the directory, run test.sh, tee output to deploy.log, and pause on exit
         wsl_cmd = (
-            f"bash '{script_path.name}' 2>&1 | tee -a deploy.log; "
+            f"cd '{wsl_dir}' && bash ./test.sh 2>&1 | tee -a deploy.log; "
             f"echo ''; read -n 1 -s -r -p 'Press any key to close...'"
         )
 
@@ -69,9 +74,10 @@ def webhook():
 
         return {"status": "success", "message": "WSL script started in popup window"}
 
+    print(f"--> Ignored branch: {branch}")
     return {"status": "ignored", "message": f"Ignored ref: {branch}"}
 
 if __name__ == "__main__":
     if not WEBHOOK_SECRET:
         print("[WARNING] WEBHOOK_SECRET environment variable is not set!")
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=True)
